@@ -65,7 +65,7 @@ export default function About() {
                     <a className='badge bg-dark whiteLink' href="/privacy-policy/" target="_blank">Privacy Policy</a>
                 </div>
                 <div>
-                    <a className='badge bg-dark whiteLink' href="https://gitlab.com/smartazanclock/pwa" target="_blank">Source Code</a>
+                    <a className='badge bg-dark whiteLink' href="https://github.com/smartazanclock/pwa" target="_blank">Source Code</a>
                 </div>
                 <div>
                     {(navigator.onLine && <a className='badge bg-dark whiteLink' href="/reset/">Reset App</a>)}
