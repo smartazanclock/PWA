@@ -1,0 +1,23 @@
+<script>
+
+    localStorage.clear();
+
+    caches.keys().then((names) => {
+        for (let name of names) {
+            caches.delete(name);
+        }
+    });
+
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+            .register("../service-worker.js")
+            .then((registration) => {
+                registration.unregister();
+            })
+            .catch((error) => {
+                console.error(`Registration failed with ${error}`);
+            })
+            .finally(() => { top.location.href = '/' });
+    }
+
+</script>

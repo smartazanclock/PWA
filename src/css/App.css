@@ -1,0 +1,79 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: #212529;
+}
+
+#clockCanvas {
+  max-height: 95vh;
+  max-width: 95vw;
+  opacity: 0.85;
+}
+
+.offcanvas-body {
+  padding-top: 0;
+}
+
+.btn-close {
+  background-color: whitesmoke;
+  margin-right: 4px !important;
+}
+
+.nav-link {
+  opacity: 0.3;
+}
+
+.nav-link.active {
+  background-color: #212529 !important;
+  opacity: 1;
+}
+
+
+.bg-setting {
+  background-color: #1B1E21;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.whiteLink {
+  color: white;
+  text-decoration: underline;
+}
+
+.whiteLink:hover {
+  color: khaki;
+}
+
+
+.hidden {
+  visibility: hidden;
+}
+
+.audioButtonDiv {
+  visibility: hidden;
+  position: fixed;
+  background-color: black;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.3;
+  z-index: 2040;
+}
+
+#loadingDiv {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 2080;
+}
