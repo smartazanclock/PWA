@@ -125,7 +125,7 @@ export default function AppContextProvider() {
             {showLoading && <Loading />}
             {output && <Menu />}
             {output && <AudioPlayer />}
-            <ToastContainer autoClose="3000" limit={1} />
+            <ToastContainer autoClose="1500" limit={2} />
         </AppContext.Provider>
     )
 
