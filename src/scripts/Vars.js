@@ -13,6 +13,7 @@ import audio13 from '../mp3s/13.mp3';
 import audio101 from '../mp3s/101.mp3'; import audio102 from '../mp3s/102.mp3'; import audio103 from '../mp3s/103.mp3';
 
 import surah001 from '../mp3s/Quran/001.mp3';
+import surah018 from '../mp3s/Quran/018.mp3';
 import surah032 from '../mp3s/Quran/032.mp3';
 import surah036 from '../mp3s/Quran/036.mp3';
 import surah067 from '../mp3s/Quran/067.mp3';
@@ -105,6 +106,7 @@ export const Audios = [
 
 export const QuranAudios = [
     { id: '001', source: surah001, name: 'Al-Fatihah', reciter: 'Mishary bin Rashid Alafasy' },
+    { id: '018', source: surah018, name: 'Al-Kahf', reciter: 'Shaykh Maher Al-Muaiqly' },
     { id: '032', source: surah032, name: 'As-Sajda', reciter: 'Kamil Jaballah Alshani' },
     { id: '036', source: surah036, name: 'Ya-Sin', reciter: 'Shaykh Maher Al-Muaiqly' },
     { id: '067', source: surah067, name: 'Al-Mulk', reciter: 'Mohammed Hashim Abdul Aziz' },
