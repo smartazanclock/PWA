@@ -75,7 +75,7 @@ export default function Address(props) {
             <span className='badge p-0 mb-2'>Set Your Location</span>
             <div className='d-flex flex-row gap-2'>
                 <div className='flex-grow-1'>
-                    <input id="address" type="text" className='form-control form-control-sm' onChange={changeAddress} value={address} />
+                    <input id="address" type="text" className='form-control form-control-sm' placeholder='Enter any address or location' onChange={changeAddress} value={address} />
                 </div>
                 <div className='col-2'>
                     <button ref={updateButton} type='submit' className='btn col-12 btn-sm btn-primary'>

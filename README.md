@@ -1,1 +1,1 @@
-# SmartAzanClock ReactJS Version
+# SmartAzanClock.com ReactJS PWA Application

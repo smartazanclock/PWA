@@ -4,9 +4,9 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/App.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import App from './App'
+import AppContextProvider from './AppContext';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppContextProvider />, document.getElementById('root'));
 
 serviceWorkerRegistration.register();
 

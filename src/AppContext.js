@@ -18,7 +18,7 @@ export default function AppContextProvider() {
         let settings = JSON.parse(localStorage.getItem('settings'));
         if (!settings) {
             setShowLoading(true);
-            initUser('new user - no settings');
+            initUser('new user - with no settings');
             return null;
         }
         else {
@@ -46,12 +46,13 @@ export default function AppContextProvider() {
     })
 
     useEffect(() => {
+        requestWakeLock();
         document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible') {
+                requestWakeLock();
                 setOutput(SmartAzanClock.run('on-visible-again'));
             }
         });
-
     }, [])
 
     const showMsg = (msg, type) => {
@@ -93,7 +94,15 @@ export default function AppContextProvider() {
         setOutput(SmartAzanClock.run("set" + JSON.stringify(finalOffsets)));
     }
 
-
+    const requestWakeLock = async () => {
+        let wlock;
+        try {
+            wlock = await navigator.wakeLock.request('screen');
+            console.log('Screen Wake Lock is active');
+        } catch (err) {
+            console.error(err);
+        }
+    };
 
     const previewAudio = (id) => {
         let AU = new AzanAudio(id, output.time, false);
@@ -101,8 +110,11 @@ export default function AppContextProvider() {
     }
 
     const reciteQuranAudio = (id) => {
-        let QA = new QuranAudio(id);
-        localStorage.setItem("QuranAudio", JSON.stringify({ ...QA }));
+        setTimeout(() => {
+            let QA = new QuranAudio(id);
+            localStorage.setItem("QuranAudio", JSON.stringify({ ...QA }));
+            setOutput(SmartAzanClock.run('Quran Recitation'))
+        }, 10 * 1000)
         setShowMenu(false);
     }
 

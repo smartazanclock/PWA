@@ -13,20 +13,19 @@ export default function Recitations() {
                     <h5>Qur'an Recitations</h5>
                     {QuranAudios.map((q) => (<button key={'Q' + q.id} type='button'
                         className='btn btn-sm btn-primary my-2 col-12 text-start' onClick={() => {
-                            let startAfter = 10;
-                            showMsg('Recitation by ' + q.reciter + ' will begin in about ' + startAfter + ' seconds inshaAllah.')
-                            setTimeout(function () { reciteQuranAudio(q.id) }, startAfter * 1000);
+                            reciteQuranAudio(q.id);
+                            showMsg('Recitation by ' + q.reciter + ' will begin in about 10 seconds inshaAllah.')
                         }}>
                         <div title={q.reciter} className='d-flex flex-row justify-content-between'>
-                            <div><img src={Icons.PlaySm.Source} /> Surah {q.name} </div>
+                            <div><img src={Icons.PlaySm.Source} alt="Play" /> Surah {q.name} </div>
                             <div>{q.id}</div>
                         </div>
                     </button>))}
 
 
                     <p></p>
-                    <span className='badge p-0'>To listen to Holy Qur'an from 100s of recitors</span>
-                    <a className='btn btn-light btn-sm col-12' href="https://qurancentral.com/" target="_blank">Qur'an Central</a>
+                    <div className='mb-1'>To listen to Holy Qur'an from 100s of recitors</div>
+                    <a className='btn btn-light btn-sm col-12' href="https://qurancentral.com/" target="_blank" rel="noreferrer">Qur'an Central</a>
 
 
                 </div>

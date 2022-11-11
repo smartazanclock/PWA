@@ -84,9 +84,6 @@ export default function Settings() {
 
                     {(deviceSettings.azanCallsEnabled === 'Y') && azanSettingsHTML}
 
-
-
-
                 </div>
             </div>
         </div>

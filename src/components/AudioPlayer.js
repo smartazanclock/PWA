@@ -58,7 +58,6 @@ export default function AudioPlayer() {
             if (promise) {
                 promise.then(_ => {
                     // autoplay started!
-                    dol('Quran recited: ' + audio.name);
                     playerDiv.current.style.visibility = 'visible';
                     playButtonDiv.current.style.visibility = 'hidden';
                 }).catch(error => {
