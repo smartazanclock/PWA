@@ -77,7 +77,7 @@ export const SmartAzanClock = {
         this.output.clockOpacity = 1;
 
         if (this.settings.deviceSettings.mode === 'D' || (this.settings.deviceSettings.mode === 'A' && this.currentVakit.name === 'Isha')) {
-            this.output.clockOpacity = 0.13;
+            this.output.clockOpacity = 0.17;
             this.output.background = Backgrounds['dim'];
         }
 
