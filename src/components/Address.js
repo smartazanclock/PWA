@@ -31,7 +31,7 @@ export default function Address(props) {
         locationSpinner.current.style.display = 'inline-block';
         let ceCallURL = 'https://smartazanclock.com/geolocation?address=' + address;
 
-        fetch(ceCallURL, { method: 'GET' }).then((response) => {
+        fetch(ceCallURL, { method: 'POST' }).then((response) => {
 
             if (response.status === 200) {
                 response.json().then((data) => {
@@ -61,7 +61,7 @@ export default function Address(props) {
 
         let cSettings = JSON.parse(localStorage.getItem('settings'));
         let ceCallURL = 'https://smartazanclock.com/iplocation';
-        fetch(ceCallURL, { method: 'GET' }).then((response) => {
+        fetch(ceCallURL, { method: 'POST' }).then((response) => {
             if (response.status === 200) {
                 response.json().then((data) => {
                     cSettings.locationSettings.address = data.address;

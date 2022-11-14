@@ -75,9 +75,11 @@ export const SmartAzanClock = {
         this.output.hourAngle = timeToRadians(this.currentDateTime.getHours() + ':' + this.currentDateTime.getMinutes(), 24);
         this.output.background = Backgrounds[this.currentVakit.name.toLowerCase() + (hijriDay % 3)];
         this.output.clockOpacity = 1;
+        this.output.dim = 0;
 
         if (this.settings.deviceSettings.mode === 'D' || (this.settings.deviceSettings.mode === 'A' && this.currentVakit.name === 'Isha')) {
-            this.output.clockOpacity = 0.17;
+            this.output.dim = 1;
+            this.output.clockOpacity = 0.25;
             this.output.background = Backgrounds['dim'];
         }
 

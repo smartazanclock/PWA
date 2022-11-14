@@ -168,7 +168,7 @@ const initUser = (info) => {
             let cvd = JSON.parse(atob(cv));
             let address = cvd.address;
             let ceCallURL = 'https://smartazanclock.com/geolocation?address=' + address;
-            fetch(ceCallURL, { method: 'GET' }).then((response) => {
+            fetch(ceCallURL, { method: 'POST' }).then((response) => {
                 if (response.status === 200) {
                     response.json().then((data) => {
                         settings.locationSettings.address = data.address;
@@ -192,7 +192,7 @@ const initUser = (info) => {
     }
     else {
         let ceCallURL = 'https://smartazanclock.com/iplocation';
-        fetch(ceCallURL, { method: 'GET' }).then((response) => {
+        fetch(ceCallURL, { method: 'POST' }).then((response) => {
             if (response.status === 200) {
                 response.json().then((data) => {
                     settings.locationSettings.address = data.address;

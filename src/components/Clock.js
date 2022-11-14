@@ -4,7 +4,9 @@ import { format12 } from '../scripts/SmartAzanClock'
 
 export default function Clock() {
 
-    const { showMenu, setShowMenu, nextText, todaysDate, hijriDate, locationSettings, calculationSettings, deviceSettings, hourAngle, vakits, displayTime, currentVakit, nextVakit, elapsed, background, clockOpacity } = useContext(AppContext)
+    const { showMenu, setShowMenu, nextText, todaysDate, hijriDate, locationSettings,
+        calculationSettings, deviceSettings, hourAngle, vakits, displayTime, currentVakit, nextVakit,
+        elapsed, background, dim, clockOpacity } = useContext(AppContext)
 
     const canvasRef = useRef(null)
 
@@ -57,6 +59,9 @@ export default function Clock() {
             return sac;
         },
         fillCircle: (ctx, r, x, y, color, opacity) => {
+            if (dim === 1)
+                return sac;
+
             ctx.save();
             ctx.translate(size / 2, size / 2);
             if (opacity)
@@ -80,6 +85,10 @@ export default function Clock() {
             return sac;
         },
         drawArrow: (ctx, angle, x, width, height, color) => {
+
+            if (dim === 1)
+                return sac;
+
             ctx.save();
             ctx.translate(size / 2, size / 2);
             ctx.rotate(angle);
@@ -93,6 +102,10 @@ export default function Clock() {
             return sac;
         },
         drawNumbers24: (ctx, r, fontSize, color) => {
+
+            if (dim === 1)
+                return sac;
+
             let p;
             for (let n = 0; n < 24; n++) {
                 ctx.save();
@@ -142,6 +155,9 @@ export default function Clock() {
 
         },
         drawArcs: (ctx, r, arcWidth, vakits) => {
+
+            if (dim === 1)
+                return sac;
 
             let borderPadding = Math.PI / 450;
             for (let i = 0; i < vakits.length; i++) {
