@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'react-toastify/dist/ReactToastify.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'https://kit.fontawesome.com/f10fa9c41a.js';
 import './css/App.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import AppContextProvider from './AppContext';

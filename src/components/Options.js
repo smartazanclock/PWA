@@ -12,7 +12,7 @@ export default function Options(props) {
         newSetting[fieldName] = v;
         let finalSettings = {};
         finalSettings[settingName] = { ...eval(settingName), ...newSetting };
-        updateSettings({ ...finalSettings }, settingName.toUpperCase() + ' ' + fieldName.toUpperCase() + ' updated.');
+        updateSettings({ ...finalSettings });
     }
 
     return (

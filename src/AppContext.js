@@ -67,7 +67,8 @@ export default function AppContextProvider() {
         let newSettings = { ...currentSettings, ...kv }
         localStorage.setItem('settings', JSON.stringify({ ...newSettings }));
         setOutput(SmartAzanClock.run("set" + JSON.stringify(kv)));
-        showMsg(msg);
+        if (msg)
+            showMsg(msg);
     }
 
     const updateOffset = (vakit, op) => {
@@ -125,7 +126,7 @@ export default function AppContextProvider() {
             {showLoading && <Loading />}
             {output && <Menu />}
             {output && <AudioPlayer />}
-            <ToastContainer autoClose="1500" limit={2} />
+            <ToastContainer autoClose="2000" limit={1} />
         </AppContext.Provider>
     )
 

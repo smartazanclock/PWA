@@ -1,5 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from 'react'
 import { AppContext } from '../AppContext';
+import { FA } from '../scripts/Vars';
 
 export default function Address(props) {
 
@@ -88,7 +89,7 @@ export default function Address(props) {
                 </div>
                 <div className='col-2'>
                     <button ref={updateButton} type='submit' className='btn col-12 btn-sm btn-primary'>
-                        <i ref={searchIcon} className='fa-solid fa-search'></i>
+                        <span ref={searchIcon}>{FA.search}</span>
                         <span ref={locationSpinner} className="spinner-border spinner-border-sm mx-1" style={{ display: 'none' }}></span>
                     </button>
                 </div>

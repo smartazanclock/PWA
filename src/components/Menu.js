@@ -6,6 +6,7 @@ import Settings from './Settings'
 import Recitations from './Recitations';
 import About from './About';
 import { AppContext } from '../AppContext';
+import { FA } from '../scripts/Vars';
 
 export default function Menu() {
 
@@ -24,27 +25,29 @@ export default function Menu() {
                     <div>
                         <ul className="nav nav-pills">
                             <li className='nav-item'>
-                                <button className="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                <button className="nav-link active fs-4" id="home-tab" data-bs-toggle="tab"
                                     data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
-                                    <i className="fa-solid fa-gear fs-4"></i>
+                                    {FA.gear}
                                 </button>
                             </li>
                             <li className='nav-item'>
-                                <button ref={recitationsTab} className="nav-link" id="recitations-tab" data-bs-toggle="tab"
+                                <button ref={recitationsTab} className="nav-link fs-4" id="recitations-tab" data-bs-toggle="tab"
                                     data-bs-target="#recitations" type="button" role="tab" aria-controls="recitations" aria-selected="false">
-                                    <i className="fa-solid fa-book-open fs-4"></i>
+                                    {FA.book}
                                 </button>
                             </li>
                             <li className='nav-item'>
-                                <button className="nav-link" id="about-tab" data-bs-toggle="tab"
+                                <button className="nav-link fs-4" id="about-tab" data-bs-toggle="tab"
                                     data-bs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="false">
-                                    <i className="fa-solid fa-circle-info fs-4"></i>
+                                    {FA.info}
                                 </button>
                             </li>
                         </ul>
                     </div>
-                    <div className='pt-1'>
-                        <i onClick={() => { setShowMenu(false) }} className="fa-solid fa-rectangle-xmark fs-2 bg-dark text-secondary pointer"></i>
+                    <div>
+                        <span onClick={() => { setShowMenu(false) }} className="pointer bg-dark text-secondary fs-2">
+                            {FA.close}
+                        </span>
                     </div>
                 </div>
             </Offcanvas.Header>

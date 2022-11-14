@@ -1,6 +1,7 @@
 import React from 'react'
 import { Devices } from '../scripts/Vars'
 import ChromeExtensionBanner from '../images/chrome-extension-banner.png'
+import { FA } from '../scripts/Vars'
 
 export default function About() {
 
@@ -18,12 +19,12 @@ export default function About() {
             <p></p>
 
             <div className='d-flex flex-column gap-2'>
-                <div><i className='fa-solid fa-check'></i> It's free, safe and open source</div>
-                <div><i className='fa-solid fa-check'></i> No registration is required</div>
-                <div><i className='fa-solid fa-check'></i> No cookies</div>
-                <div><i className='fa-solid fa-check'></i> No ads</div>
-                <div><i className='fa-solid fa-check'></i> No app store downloads</div>
-                <div><i className='fa-solid fa-check'></i> Works even when offline</div>
+                <div>{FA.check} It's free, safe and open source</div>
+                <div>{FA.check} No registration is required</div>
+                <div>{FA.check} No cookies</div>
+                <div>{FA.check} No ads</div>
+                <div>{FA.check} No app store downloads</div>
+                <div>{FA.check} Works even when offline</div>
             </div>
 
             <p></p>
@@ -49,15 +50,15 @@ export default function About() {
             </div>
 
             <div className='d-flex flex-row justify-content-between my-3'>
-                <div><a className='btn btn-sm btn-secondary' href="mailto:smartazanclock@gmail.com"><i className='fa-solid fa-envelope'></i> Contact</a></div>
+                <div><a className='btn btn-sm btn-secondary' href="mailto:smartazanclock@gmail.com">{FA.envelope} Contact</a></div>
                 <div>
-                    <a className='btn btn-sm btn-secondary' href="/privacy-policy/" target="_blank" rel="noreferrer"><i className="fa-solid fa-shield-halved"></i> Privacy Policy</a>
+                    <a className='btn btn-sm btn-secondary' href="/privacy-policy/" target="_blank" rel="noreferrer">{FA.shield} Privacy Policy</a>
                 </div>
                 <div>
-                    {(navigator.onLine && <a className='btn btn-sm btn-secondary' href="/reset/"><i className="fa-solid fa-eraser"></i> Reset</a>)}
+                    {(navigator.onLine && <a className='btn btn-sm btn-secondary' href="/reset/">{FA.eraser} Reset</a>)}
                 </div>
                 <div>
-                    <a className='btn btn-sm btn-secondary' href="https://github.com/smartazanclock/pwa" target="_blank" rel="noreferrer"><i className="fa-brands fa-github"></i></a>
+                    <a className='btn btn-sm btn-secondary' href="https://github.com/smartazanclock/pwa" target="_blank" rel="noreferrer">{FA.github}</a>
                 </div>
             </div>
 

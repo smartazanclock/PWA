@@ -4,6 +4,7 @@ import DropDown from './DropDown';
 import Options from './Options';
 import { CalculationMethods, AsrCalculationMethods, Vakits, AzanCallsEnabledValues, Audios, Azans, FajrAzans, DeviceModeValues } from '../scripts/Vars'
 import { AppContext } from '../AppContext';
+import { FA } from '../scripts/Vars';
 
 export default function Settings() {
 
@@ -41,7 +42,7 @@ export default function Settings() {
                     <div className='col-2'>
                         <button onClick={() => { previewAudio(azanValue * 1); document.activeElement.blur(); }}
                             type='button'
-                            className='btn btn-sm col-12 btn-primary pt-1'><i className='fa-solid fa-play'></i></button>
+                            className='btn btn-sm col-12 btn-primary pt-1'>{FA.play}</button>
                     </div>
                     <div>
                         <div className='d-flex flex-row gap-1 align-items-center'>

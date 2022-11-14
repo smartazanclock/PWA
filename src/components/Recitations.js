@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { QuranAudios } from '../scripts/Vars'
+import { QuranAudios, FA } from '../scripts/Vars'
 import { AppContext } from '../AppContext';
 
 export default function Recitations() {
@@ -17,7 +17,7 @@ export default function Recitations() {
                     document.activeElement.blur();
                 }}>
                 <div title={q.reciter} className='d-flex flex-row justify-content-between'>
-                    <div><i className='fa-solid fa-play'></i></div>
+                    <div>{FA.play}</div>
                     <div className='flex-grow-1 px-2'>Surah {q.name} </div>
                     <div>{q.id}</div>
                 </div>
@@ -26,7 +26,7 @@ export default function Recitations() {
 
             <p></p>
             <div className='mb-1 small'>To listen to Holy Qur'an from 100s of recitors</div>
-            <a className='btn btn-sm btn-light col-12' href="https://qurancentral.com/" target="_blank" rel="noreferrer">Qur'an Central <i class="fa-solid fa-up-right-from-square"></i></a>
+            <a className='btn btn-sm btn-light col-12' href="https://qurancentral.com/" target="_blank" rel="noreferrer">Qur'an Central</a>
         </div>
     )
 }

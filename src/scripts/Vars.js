@@ -18,8 +18,28 @@ import surah036 from '../mp3s/Quran/036.mp3';
 import surah067 from '../mp3s/Quran/067.mp3';
 import surah078 from '../mp3s/Quran/078.mp3';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faCheck, faEnvelope, faEraser, faGear, faBookOpen, faInfoCircle, faRectangleXmark, faPlay, faShieldHalved, faShield } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from "@fortawesome/free-brands-svg-icons"
+
+export const FA = {
+    check: <FontAwesomeIcon icon={faCheck} />,
+    search: <FontAwesomeIcon icon={faSearch} />,
+    envelope: <FontAwesomeIcon icon={faEnvelope} />,
+    eraser: <FontAwesomeIcon icon={faEraser} />,
+    gear: <FontAwesomeIcon icon={faGear} />,
+    book: <FontAwesomeIcon icon={faBookOpen} />,
+    info: <FontAwesomeIcon icon={faInfoCircle} />,
+    close: <FontAwesomeIcon icon={faRectangleXmark} />,
+    play: <FontAwesomeIcon icon={faPlay} />,
+    shield: <FontAwesomeIcon icon={faShieldHalved} />,
+    github: <FontAwesomeIcon icon={faGithub} />
+}
+
 export const DefaultSettings = {
-    locationSettings: { address: 'Al-Masjid An-Nabawi', timeZoneID: 'Asia/Riyadh', lat: '24.4672105', lng: '39.611131' },  /* صلى الله عليه وعلى آله وسلم */
+    locationSettings: {
+        address: 'Al-Masjid An-Nabawi', timeZoneID: 'Asia/Riyadh', lat: '24.4672105', lng: '39.611131'
+    },  /* صلى الله عليه وعلى آله وسلم */
     calculationSettings: { method: 'ISNA', asrMethod: 'S' },
     deviceSettings: { azanCallsEnabled: 'Y', mode: 'N' },
     azanSettings: { fajr: 13, dhuhr: 7, asr: 9, maghrib: 8, isha: 7 },
