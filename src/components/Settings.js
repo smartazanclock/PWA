@@ -1,7 +1,8 @@
 import React, { useContext, createRef, useRef, useEffect } from 'react'
 import Address from './Address';
 import DropDown from './DropDown';
-import { CalculationMethods, AsrCalculationMethods, Vakits, AzanCallsEnabledValues, Audios, Azans, FajrAzans, Icons } from '../scripts/Vars'
+import Options from './Options';
+import { CalculationMethods, AsrCalculationMethods, Vakits, AzanCallsEnabledValues, Audios, Azans, FajrAzans, DeviceModeValues } from '../scripts/Vars'
 import { AppContext } from '../AppContext';
 
 export default function Settings() {
@@ -21,8 +22,6 @@ export default function Settings() {
         let azanValue = azanSettings[cVakit];
         let offsetValue = offsetSettings[cVakit];
         let values = (item === "Fajr") ? FajrAzans : Azans;
-
-        let vColor = vakits.find(v => v.name === item).color;
         let vTime = vakits.find(v => v.name === item).displayTime;
 
         azanSettingsHTML.push(
@@ -40,15 +39,15 @@ export default function Settings() {
                         <DropDown name={'azanSettings.' + cVakit} selectedValue={azanValue} values={values} />
                     </div>
                     <div className='col-2'>
-                        <button onClick={() => { previewAudio(azanValue * 1) }}
+                        <button onClick={() => { previewAudio(azanValue * 1); document.activeElement.blur(); }}
                             type='button'
-                            className='btn btn-sm col-12 btn-primary pt-1'><img src={Icons.PlaySm.Source} /></button>
+                            className='btn btn-sm col-12 btn-primary pt-1'><i className='fa-solid fa-play'></i></button>
                     </div>
                     <div>
                         <div className='d-flex flex-row gap-1 align-items-center'>
-                            <div><button type='button' onClick={() => { updateOffset(cVakit, '-') }} className='btn btn-light btn-sm'>-</button></div>
-                            <div><button type='button' onClick={() => { updateOffset(cVakit, '0') }} className='btn btn-dark btn-sm'>{offsetValue}</button></div>
-                            <div><button type='button' onClick={() => { updateOffset(cVakit, '+') }} className='btn btn-light btn-sm'>+</button></div>
+                            <div><button type='button' onClick={() => { updateOffset(cVakit, '-'); document.activeElement.blur(); }} className='btn btn-light btn-sm'>-</button></div>
+                            <div><button type='button' onClick={() => { updateOffset(cVakit, '0'); document.activeElement.blur(); }} className='btn btn-dark btn-sm'>{offsetValue}</button></div>
+                            <div><button type='button' onClick={() => { updateOffset(cVakit, '+'); document.activeElement.blur(); }} className='btn btn-light btn-sm'>+</button></div>
                         </div>
                     </div>
                 </div>
@@ -59,33 +58,35 @@ export default function Settings() {
     })
 
     return (
-        <div className='text-light'>
-            <div className='card bg-setting'>
-                <div className='card-body pt-1'>
+        <div>
 
-                    <Address value={locationSettings.address} />
 
-                    <p></p>
+            <Address value={locationSettings.address} />
 
-                    <span className='badge mb-2 p-0'>Calculation Method</span>
-                    <DropDown name="calculationSettings.method" selectedValue={calculationSettings.method} values={CalculationMethodValues} />
+            <p></p>
 
-                    <p></p>
+            <span className='badge mb-2 p-0'>Calculation Method</span>
+            <DropDown name="calculationSettings.method" selectedValue={calculationSettings.method} values={CalculationMethodValues} />
 
-                    <span className='badge mb-2 p-0'>Asr Calculation Method</span>
-                    <DropDown name="calculationSettings.asrMethod" selectedValue={calculationSettings.asrMethod} values={AsrCalculationMethods} />
+            <p></p>
 
-                    <p></p>
+            <span className='badge mb-2 p-0'>Asr Calculation Method</span>
+            <Options name="calculationSettings.asrMethod" selectedValue={calculationSettings.asrMethod} values={AsrCalculationMethods} />
+            <p></p>
 
-                    <span className='badge mb-2 p-0'>Enable Azan Calls</span>
-                    <DropDown name="deviceSettings.azanCallsEnabled" selectedValue={deviceSettings.azanCallsEnabled} values={AzanCallsEnabledValues} />
+            <span className='badge mb-2 p-0'>Mode</span>
+            <Options name="deviceSettings.mode" selectedValue={deviceSettings.mode} values={DeviceModeValues} />
 
-                    <p></p>
+            <p></p>
 
-                    {(deviceSettings.azanCallsEnabled === 'Y') && azanSettingsHTML}
+            <span className='badge mb-2 p-0'>Enable Azan Calls</span>
+            <Options name="deviceSettings.azanCallsEnabled" selectedValue={deviceSettings.azanCallsEnabled} values={AzanCallsEnabledValues} />
 
-                </div>
-            </div>
+            <p></p>
+
+            {(deviceSettings.azanCallsEnabled === 'Y') && azanSettingsHTML}
+
+
         </div>
     )
 }

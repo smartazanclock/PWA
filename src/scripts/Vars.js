@@ -19,33 +19,13 @@ import surah036 from '../mp3s/Quran/036.mp3';
 import surah067 from '../mp3s/Quran/067.mp3';
 import surah078 from '../mp3s/Quran/078.mp3';
 
-import playImgSrc from '../images/play.png';
-import playSmImgSrc from '../images/play-sm.png';
-import markerImgSrc from '../images/marker.png';
-import stopImgSrc from '../images/stop.png';
-import settingsImgSrc from '../images/settings.png';
-import aboutImgSrc from '../images/about.png';
-import recitationsImgSrc from '../images/recitations.png';
-import greenCheckImgSrc from '../images/green-check.png';
-
-export const Icons = {
-    Play: { Source: playImgSrc },
-    PlaySm: { Source: playSmImgSrc },
-    Stop: { Source: stopImgSrc },
-    Settings: { Source: settingsImgSrc },
-    Recitations: { Source: recitationsImgSrc },
-    About: { Source: aboutImgSrc },
-    Marker: { Source: markerImgSrc },
-    GreenCheck: { Source: greenCheckImgSrc }
-}
-
 export const DefaultSettings = {
     locationSettings: { address: 'Al-Masjid An-Nabawi', timeZoneID: 'Asia/Riyadh', lat: '24.4672105', lng: '39.611131' },  /* صلى الله عليه وعلى آله وسلم */
     calculationSettings: { method: 'ISNA', asrMethod: 'S' },
-    deviceSettings: { azanCallsEnabled: 'Y' },
-    azanSettings: { fajr: 10, dhuhr: 7, asr: 9, maghrib: 8, isha: 7 },
+    deviceSettings: { azanCallsEnabled: 'Y', mode: 'N' },
+    azanSettings: { fajr: 13, dhuhr: 7, asr: 9, maghrib: 8, isha: 7 },
     offsetSettings: { fajr: 0, dhuhr: 0, asr: 0, maghrib: 0, isha: 0 },
-    settingsVersion: 13
+    settingsVersion: 16
 }
 
 export const CalculationMethods = {
@@ -80,6 +60,12 @@ export const AzanCallsEnabledValues = [
     { id: 'Y', name: 'Yes' },
     { id: 'N', name: 'No' }
 ];
+
+export const DeviceModeValues = [
+    { id: 'A', name: 'Auto', description: 'Dim during Isha and Normal all other times.' },
+    { id: 'N', name: 'Normal' },
+    { id: 'D', name: 'Dim' }
+]
 
 export const HijriMonths = ["Muharram", "Safar", "Rabi Al-Awwal", "Rabi Al-Thani", "Jamada Al-Awwal", "Jamada Al-Thani", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhul Qa'dah", "Dhul Hijjah"];
 

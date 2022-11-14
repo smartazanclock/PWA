@@ -4,7 +4,7 @@ import { format12 } from '../scripts/SmartAzanClock'
 
 export default function Clock() {
 
-    const { showMenu, setShowMenu, nextText, todaysDate, hijriDate, locationSettings, calculationSettings, hourAngle, vakits, displayTime, currentVakit, nextVakit, elapsed, background } = useContext(AppContext)
+    const { showMenu, setShowMenu, nextText, todaysDate, hijriDate, locationSettings, calculationSettings, deviceSettings, hourAngle, vakits, displayTime, currentVakit, nextVakit, elapsed, background, clockOpacity } = useContext(AppContext)
 
     const canvasRef = useRef(null)
 
@@ -31,6 +31,7 @@ export default function Clock() {
             .arcText(ctx, 'top', hijriDate, 33, 255, 'white')
             .arcText(ctx, 'bottom', '#vakits#', 33, 377, 'white')
             .arcText(ctx, 'bottom', 'Prayer Times for ' + locationSettings.address + ' using ' + calculationSettings.method + ' Calculation Method. SmartAzanClock.com', 13, 497, 'black')
+
     })
 
     const sac = {
@@ -238,8 +239,10 @@ export default function Clock() {
     return (
         <div className='d-flex flex-row h-100 align-items-center justify-content-center'>
             <div onClick={() => setShowMenu(!showMenu)}>
-                <canvas id="clockCanvas" className="img-fluid" width={size} height={size} ref={canvasRef} ></canvas>
+                <canvas id="clockCanvas" className="img-fluid"
+                    style={{ opacity: clockOpacity }}
+                    width={size} height={size} ref={canvasRef} ></canvas>
             </div>
-        </div>
+        </div >
     );
 }

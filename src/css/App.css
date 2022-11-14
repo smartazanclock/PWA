@@ -11,20 +11,16 @@ body {
 #clockCanvas {
   max-height: 95vh;
   max-width: 95vw;
-  opacity: 0.85;
+  opacity: 0.87;
 }
 
 .offcanvas-body {
   padding-top: 0;
 }
 
-.btn-close {
-  background-color: whitesmoke;
-  margin-right: 4px !important;
-}
-
 .nav-link {
-  opacity: 0.3;
+  color: whitesmoke;
+  opacity: 0.25;
 }
 
 .nav-link.active {
@@ -32,6 +28,9 @@ body {
   opacity: 1;
 }
 
+.nav-link:hover {
+  color: whitesmoke;
+}
 
 .bg-setting {
   background-color: #1B1E21;

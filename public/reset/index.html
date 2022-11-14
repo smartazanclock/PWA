@@ -1,23 +1,34 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
 
-    localStorage.clear();
+<head>
+    <title>SmartAzanClock - Reset</title>
+</head>
 
-    caches.keys().then((names) => {
-        for (let name of names) {
-            caches.delete(name);
+<body bgcolor="black">
+    <script lang="JavaScript">
+
+        localStorage.clear();
+
+        caches.keys().then((names) => {
+            for (let name of names) {
+                caches.delete(name);
+            }
+        });
+
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+                .register("../service-worker.js")
+                .then((registration) => {
+                    registration.unregister();
+                })
+                .catch((error) => {
+                    console.error(`Registration failed with ${error}`);
+                })
+                .finally(() => { top.location.href = '/' });
         }
-    });
 
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-            .register("../service-worker.js")
-            .then((registration) => {
-                registration.unregister();
-            })
-            .catch((error) => {
-                console.error(`Registration failed with ${error}`);
-            })
-            .finally(() => { top.location.href = '/' });
-    }
+    </script>
+</body>
 
-</script>
+</html>

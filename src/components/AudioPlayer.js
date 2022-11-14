@@ -1,6 +1,8 @@
 import React, { useContext, useRef, useEffect } from 'react'
 import { AppContext } from '../AppContext';
-import { Audios, QuranAudios, Icons } from '../scripts/Vars'
+import { Audios, QuranAudios } from '../scripts/Vars'
+import playImg from '../images/play.png';
+import stopImg from '../images/stop.png';
 
 export default function AudioPlayer() {
 
@@ -91,14 +93,14 @@ export default function AudioPlayer() {
                         <audio id="audioPlayer" src='' ref={audioPlayer} onEnded={stopAudio} />
                     </div>
                     <div>
-                        <img id="stopImg" src={Icons.Stop.Source} className="img-fluid" />
+                        <img id="stopImg" src={stopImg} className="img-fluid" />
                     </div>
                 </div>
             </div>
             <div ref={playButtonDiv} onClick={playAudio} className="audioButtonDiv">
                 <div className='d-flex h-100 justify-content-start align-items-top'>
                     <div>
-                        <img id="playImg" src={Icons.Play.Source} className="img-fluid" />
+                        <img id="playImg" src={playImg} className="img-fluid" />
                     </div>
                 </div>
             </div>

@@ -74,17 +74,23 @@ export const SmartAzanClock = {
         this.output.displayTime = format12(this.currentTimeString);
         this.output.hourAngle = timeToRadians(this.currentDateTime.getHours() + ':' + this.currentDateTime.getMinutes(), 24);
         this.output.background = Backgrounds[this.currentVakit.name.toLowerCase() + (hijriDay % 3)];
+        this.output.clockOpacity = 1;
+
+        if (this.settings.deviceSettings.mode === 'D' || (this.settings.deviceSettings.mode === 'A' && this.currentVakit.name === 'Isha')) {
+            this.output.clockOpacity = 0.25;
+            this.output.background = '';
+        }
 
         if (this.currentTimeString === this.currentVakit.time && this.settings.deviceSettings.azanCallsEnabled === 'Y') {
             let cvakit = this.currentVakit.name.toLowerCase();
-                if (cvakit !== "sunrise") {
-                    let azanAudioID = this.settings.azanSettings[cvakit] * 1;
-                    let AU = new AzanAudio(azanAudioID, this.output.time, false);
-                    let storedAU = JSON.parse(localStorage.getItem("azanAudio"));
-                    if (!storedAU || storedAU.time !== AU.time) {
-                        localStorage.setItem("azanAudio", JSON.stringify({ ...AU }));
-                    }
+            if (cvakit !== "sunrise") {
+                let azanAudioID = this.settings.azanSettings[cvakit] * 1;
+                let AU = new AzanAudio(azanAudioID, this.output.time, false);
+                let storedAU = JSON.parse(localStorage.getItem("azanAudio"));
+                if (!storedAU || storedAU.time !== AU.time) {
+                    localStorage.setItem("azanAudio", JSON.stringify({ ...AU }));
                 }
+            }
         }
 
         this.output = { ...this.output, ...this.settings };

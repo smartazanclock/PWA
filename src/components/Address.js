@@ -1,15 +1,17 @@
 import React, { useState, useContext, useRef, useEffect } from 'react'
 import { AppContext } from '../AppContext';
-import { Icons } from '../scripts/Vars';
 
 export default function Address(props) {
 
-    const { locationSettings, updateSettings, showMsg, seconds, dol } = useContext(AppContext)
+    const { locationSettings, updateSettings, showMsg, dol } = useContext(AppContext)
     const [address, setAddress] = useState(props.value)
 
     const updateButton = useRef(null)
-    const rightArrow = useRef(null)
-    const spinner = useRef(null)
+    const detectButton = useRef(null)
+    const searchIcon = useRef(null)
+    const detectIcon = useRef(null)
+    const locationSpinner = useRef(null)
+    const detectSpinner = useRef(null)
     //const marker = useRef(null)
 
     useEffect(() => {
@@ -24,8 +26,8 @@ export default function Address(props) {
     function updateAddress(e) {
         e.preventDefault();
         updateButton.current.disabled = true;
-        rightArrow.current.style.display = 'none';
-        spinner.current.style.display = 'inline-block';
+        searchIcon.current.style.display = 'none';
+        locationSpinner.current.style.display = 'inline-block';
         let ceCallURL = 'https://smartazanclock.com/geolocation?address=' + address;
 
         fetch(ceCallURL, { method: 'GET' }).then((response) => {
@@ -44,16 +46,19 @@ export default function Address(props) {
             .catch(err => { showMsg("Couldn't find that location. Please make sure you are connected to Internet and try again.", "error"); })
             .finally(() => {
                 updateButton.current.disabled = false;
-                rightArrow.current.style.display = 'inline-block';
-                spinner.current.style.display = 'none';
+                searchIcon.current.style.display = 'inline-block';
+                locationSpinner.current.style.display = 'none';
             });
     }
 
 
     function detectLocation() {
 
-        let cSettings = JSON.parse(localStorage.getItem('settings'));
+        detectButton.current.disabled = true;
+        detectIcon.current.style.display = 'none';
+        detectSpinner.current.style.display = 'inline-block';
 
+        let cSettings = JSON.parse(localStorage.getItem('settings'));
         let ceCallURL = 'https://smartazanclock.com/iplocation';
         fetch(ceCallURL, { method: 'GET' }).then((response) => {
             if (response.status === 200) {
@@ -66,7 +71,11 @@ export default function Address(props) {
                     showMsg("Your location is updated based on your IP.")
                 });
             }
-        }).catch(err => { dol(err) });
+        }).catch(err => { dol(err) }).finally(() => {
+            detectButton.current.disabled = false;
+            detectIcon.current.style.display = 'inline-block';
+            detectSpinner.current.style.display = 'none';
+        });
 
     }
 
@@ -79,19 +88,18 @@ export default function Address(props) {
                 </div>
                 <div className='col-2'>
                     <button ref={updateButton} type='submit' className='btn col-12 btn-sm btn-primary'>
-                        <img ref={rightArrow} src={Icons.PlaySm.Source} />
-                        <div ref={spinner} className="spinner-border spinner-border-sm mx-1" style={{ display: 'none' }}></div>
+                        <i ref={searchIcon} className='fa-solid fa-search'></i>
+                        <span ref={locationSpinner} className="spinner-border spinner-border-sm mx-1" style={{ display: 'none' }}></span>
                     </button>
                 </div>
                 {
                     /*
-                    
-                    <div className='col-2'>
-                    <button onClick={detectLocation} type='button' className='btn col-12 btn-sm btn-light'>
-                        <img ref={marker} src={Icons.Marker.Source} />
+                <div className='col-2'>
+                    <button ref={detectButton} onClick={detectLocation} type='button' className='btn col-12 btn-sm btn-light'>
+                        <i ref={detectIcon} className='fa-solid fa-location-dot'></i>
+                        <span ref={detectSpinner} className="spinner-border spinner-border-sm mx-1" style={{ display: 'none' }}></span>
                     </button>
-                </div>
-
+                </div>    
                     */
                 }
 

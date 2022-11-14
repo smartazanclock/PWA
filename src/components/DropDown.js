@@ -12,6 +12,7 @@ export default function DropDown(props) {
         let finalSettings = {};
         newSetting[e.target.name.split('.')[1]] = e.target.value;
         finalSettings[settingName] = { ...eval(settingName), ...newSetting };
+        document.activeElement.blur(); 
         updateSettings({ ...finalSettings }, e.target.name.split('.')[0].toUpperCase() + ' ' + e.target.name.split('.')[1].toUpperCase() + ' updated.');
     }
 
