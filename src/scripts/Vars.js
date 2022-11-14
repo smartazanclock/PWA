@@ -4,6 +4,7 @@ import dhuhr0 from '../images/bg/dhuhr/0.jpg'; import dhuhr1 from '../images/bg/
 import asr0 from '../images/bg/asr/0.jpg'; import asr1 from '../images/bg/asr/1.jpg'; import asr2 from '../images/bg/asr/2.jpg';
 import maghrib0 from '../images/bg/maghrib/0.jpg'; import maghrib1 from '../images/bg/maghrib/1.jpg'; import maghrib2 from '../images/bg/maghrib/2.jpg';
 import isha0 from '../images/bg/isha/0.jpg'; import isha1 from '../images/bg/isha/1.jpg'; import isha2 from '../images/bg/isha/2.jpg';
+import dim0 from '../images/bg/dim0.jpg';
 
 import audio1 from '../mp3s/1.mp3'; import audio2 from '../mp3s/2.mp3'; import audio3 from '../mp3s/3.mp3';
 import audio4 from '../mp3s/4.mp3'; import audio5 from '../mp3s/5.mp3'; import audio6 from '../mp3s/6.mp3';
@@ -127,7 +128,8 @@ export const Backgrounds = {
     dhuhr0: dhuhr0, dhuhr1: dhuhr1, dhuhr2: dhuhr2,
     asr0: asr0, asr1: asr1, asr2: asr2,
     maghrib0: maghrib0, maghrib1: maghrib1, maghrib2: maghrib2,
-    isha0: isha0, isha1: isha1, isha2: isha2
+    isha0: isha0, isha1: isha1, isha2: isha2,
+    dim: dim0
 }
 
 export class AzanAudio {
