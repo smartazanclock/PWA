@@ -10,7 +10,7 @@ import audio1 from '../mp3s/1.mp3'; import audio2 from '../mp3s/2.mp3'; import a
 import audio4 from '../mp3s/4.mp3'; import audio5 from '../mp3s/5.mp3'; import audio6 from '../mp3s/6.mp3';
 import audio7 from '../mp3s/7.mp3'; import audio8 from '../mp3s/8.mp3'; import audio9 from '../mp3s/9.mp3';
 import audio10 from '../mp3s/10.mp3'; import audio11 from '../mp3s/11.mp3'; import audio12 from '../mp3s/12.mp3';
-import audio13 from '../mp3s/13.mp3';
+import audio13 from '../mp3s/13.mp3';import audio14 from '../mp3s/14.mp3';
 import audio101 from '../mp3s/101.mp3'; import audio102 from '../mp3s/102.mp3'; import audio103 from '../mp3s/103.mp3';
 
 import surah001 from '../mp3s/Quran/001.mp3';
@@ -106,6 +106,7 @@ export const Audios = [
     { id: 11, source: audio11, name: 'Fajr Azan by Mishary Al-Afasy', isAzan: false, isFajrAzan: true, isAlarm: false },
     { id: 12, source: audio12, name: 'Madina Fajr Azan by Shaykh Surayhi', isAzan: false, isFajrAzan: true, isAlarm: false },
     { id: 13, source: audio13, name: 'Fajr Azan by Shaykh Ali Ahmed Mullah', isAzan: false, isFajrAzan: true, isAlarm: false },
+    { id: 14, source: audio14, name: 'Fajr Azan by Mishary Al-Afasy With Dua', isAzan: false, isFajrAzan: true, isAlarm: false },
     { id: 101, source: audio101, name: 'Bismillahirrahmanirrahim', isAzan: true, isFajrAzan: true, isAlarm: true },
     { id: 102, source: audio102, name: 'Soft Beep Sound', isAzan: true, isFajrAzan: true, isAlarm: true },
     { id: 103, source: audio103, name: 'As-Salatu Khayrun Minan Nawm', isAzan: false, isFajrAzan: false, isAlarm: true }
