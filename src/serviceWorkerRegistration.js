@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify'
 
-const checkEvery = 33 /* seconds */
+//const checkEvery = 33 /* seconds */
 const isLocalhost = Boolean(window.location.hostname === 'localhost');
 
 export function register() {
@@ -10,13 +10,13 @@ export function register() {
 
       if (!isLocalhost) {
         navigator.serviceWorker.register(swUrl).then((registration) => {
-          registration.update();
-          setInterval(() => { registration.update() }, checkEvery * 1000);
-          if (registration.waiting) { registration.waiting.postMessage({ type: 'SKIP_WAITING' }) }
+
+          // registration.update();
+          // setInterval(() => { registration.update() }, checkEvery * 1000);
+          // if (registration.waiting) { registration.waiting.postMessage({ type: 'SKIP_WAITING' }) }
+
           registration.onupdatefound = () => {
-
             const installingWorker = registration.installing;
-
             installingWorker.onstatechange = () => {
               if (installingWorker.state === 'activated') {
                 toast.info('App will refresh in a few seconds.', { toastId: "PWAVersionUpdate" });
