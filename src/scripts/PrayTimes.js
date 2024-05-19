@@ -39,7 +39,7 @@ export default function PrayTimes(method) {
             imsak: '10 min',
             dhuhr: '0 min',
             asr: 'Standard',
-            highLats: 'NightMiddle'
+            highLats: 'AngleBased' /* NightMiddle, AngleBased, OneSeventh */
         },
 
         timeFormat = '24h',
