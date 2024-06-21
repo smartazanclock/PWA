@@ -95,9 +95,9 @@ export default function Settings() {
             <div className='d-flex flex-row justify-content-start gap-2 mt-3'>
                 <div className='badge bg-secondary p-1'>Imsak @ {format12(arcVakits.find(f => f.name == 'Imsak').time)}</div>
                 <div className='badge bg-secondary p-1'>Duha @ {format12(arcVakits.find(f => f.name == 'Duha').time)} - {format12(arcVakits.find(f => f.name == 'Duhaend').time)}</div>
-                <div className='badge bg-secondary p-1'>1/3 @ {format12(oneThirdTime)}</div>
             </div>
             <div className='d-flex flex-row justify-content-start gap-2 mt-2'>
+                <div className='badge bg-secondary p-1'>1/3 @ {format12(oneThirdTime)}</div>
                 <div className='badge bg-secondary p-1'>Midnight @ {format12(midnightTime)}</div>
                 <div className='badge bg-secondary p-1'>2/3 @ {format12(twoThirdTime)}</div>
             </div>
