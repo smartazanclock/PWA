@@ -5,7 +5,7 @@ import { format12 } from '../scripts/SmartAzanClock'
 export default function Clock() {
 
     const { showMenu, setShowMenu, nextText, todaysDate, hijriDate, locationSettings,
-        calculationSettings, deviceSettings, hourAngle, vakits, displayTime, currentVakit, nextVakit,
+        calculationSettings, deviceSettings, hourAngle, vakits, arcVakits, displayTime, currentVakit, nextVakit, currentArcVakit,
         elapsed, background, dim, clockOpacity, midnightAngle, oneThirdAngle, twoThirdAngle, alarmSettings, naflAlarmSettings, isWeekDay } = useContext(AppContext)
     const canvasRef = useRef(null)
     const size = 1000; /* size = width = height */
@@ -24,7 +24,7 @@ export default function Clock() {
             .fillCircle(ctx, 500, 0, 0, white, 0.33)
             .fillCircle(ctx, 488, 0, 0, black)
             .drawNumbers24(ctx, 455, 13, white)
-            .drawArcs(ctx, 421, 41, vakits)
+            .drawArcs(ctx, 421, 41)
             .drawHand(ctx, midnightAngle, 413, 443, 3.5, black)
             .printAt(ctx, '1/2', 14, white, 403, midnightAngle)
             .drawHand(ctx, oneThirdAngle, 413, 443, 3.5, black)
@@ -42,8 +42,8 @@ export default function Clock() {
             .arcText(ctx, 'top', hijriDate, 39, 265, white)
             .arcText(ctx, 'bottom', '#vakits#', 31, 377, white)
 
-        if (currentVakit.name != 'Sunrise')
-            sac.print(ctx, currentVakit.name, 37, white, -191);
+        if (currentArcVakit.name != 'Duhaend')
+            sac.print(ctx, currentArcVakit.name, 37, white, -191);
 
     })
 
@@ -209,25 +209,25 @@ export default function Clock() {
             return sac;
 
         },
-        drawArcs: (ctx, r, arcWidth, vakits) => {
+        drawArcs: (ctx, r, arcWidth) => {
 
             let borderPadding = Math.PI / 450;
-            for (let i = 0; i < vakits.length; i++) {
+            for (let i = 0; i < arcVakits.length; i++) {
                 ctx.save();
                 ctx.translate(size / 2, size / 2);
                 ctx.beginPath();
 
-                if (currentVakit.index === i) {
-                    ctx.strokeStyle = (dim === 1 ? 'gray' : vakits[i].color);
+                if (currentArcVakit.index === i) {
+                    ctx.strokeStyle = (dim === 1 ? 'gray' : arcVakits[i].color);
                     ctx.lineWidth = arcWidth * 0.41;
                     ctx.globalAlpha = 1;
                 }
                 else {
-                    ctx.strokeStyle = (dim === 1 ? 'gray' : vakits[i].color);
+                    ctx.strokeStyle = (dim === 1 ? 'gray' : arcVakits[i].color);
                     ctx.lineWidth = arcWidth * 0.21;
                     ctx.globalAlpha = 0.67;
                 }
-                ctx.arc(0, 0, r, vakits[i].startAngle24(), vakits[i].endAngle24() - borderPadding, false);
+                ctx.arc(0, 0, r, arcVakits[i].startAngle24(), arcVakits[i].endAngle24() - borderPadding, false);
                 ctx.stroke();
                 ctx.restore();
             }

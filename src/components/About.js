@@ -48,31 +48,40 @@ export default function About() {
             <p></p>
 
 
-            Get your own device, add SmartAzanClock to your home screen and run it. That's it!
+            Get your own device, add SmartAzanClock to your home screen and run it.
+            That's it!
 
             <p></p>
+            <div className='rtl'>
+                الحمد لله و الشكر لله
+                أزكى صلاتي و سلامي على رسول الله
+            </div>
+            <p></p>
 
-            {navigator.onLine ? (
-                <div className='card p-0'>
-                    <div className='card-body px-2 py-1'>
-                        <div className='badge text-dark'>Device suggestions</div>
-                        <div className='d-flex flex-row align-items-end'>
-                            <div className='text-center flex-grow-1'>
-                                <a href="https://www.google.com/search?tbm=shop&q=lenovo+m8+smart+tab" target="_blank">
-                                    <img src={lenovoM8Image} className="img-fluid" />
-                                    <div className='badge text-dark'>Lenovo M8</div>
-                                </a>
-                            </div>
-                            <div className='text-center flex-grow-1'>
-                                <a href="https://www.google.com/search?tbm=shop&q=lenovo+m10+p10+smart+dock" target="_blank">
-                                    <img src={lenovoM10Image} className="img-fluid" />
-                                    <div className='badge text-dark'>Lenovo M10 or P10</div>
-                                </a>
+
+            {
+                navigator.onLine ? (
+                    <div className='card p-0'>
+                        <div className='card-body px-2 py-1'>
+                            <div className='badge text-dark'>Device suggestions</div>
+                            <div className='d-flex flex-row align-items-end'>
+                                <div className='text-center flex-grow-1'>
+                                    <a href="https://www.google.com/search?tbm=shop&q=lenovo+m8+smart+tab" target="_blank">
+                                        <img src={lenovoM8Image} className="img-fluid" />
+                                        <div className='badge text-dark'>Lenovo M8</div>
+                                    </a>
+                                </div>
+                                <div className='text-center flex-grow-1'>
+                                    <a href="https://www.google.com/search?tbm=shop&q=lenovo+m10+p10+smart+dock" target="_blank">
+                                        <img src={lenovoM10Image} className="img-fluid" />
+                                        <div className='badge text-dark'>Lenovo M10 or P10</div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            ) : null}
+                ) : null
+            }
 
             <p></p>
 

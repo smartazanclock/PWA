@@ -84,7 +84,7 @@ export default function Address(props) {
     return (
         <form method='post' onSubmit={updateAddress}>
 
-            <span className='badge p-0 mb-2'>Set Your Location</span>
+            <span className='badge p-0 mb-1'>Set Your Location</span>
 
             <div className='d-flex flex-row gap-2'>
                 <div className='flex-grow-1'>

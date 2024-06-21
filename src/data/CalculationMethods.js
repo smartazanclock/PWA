@@ -25,3 +25,6 @@ export const AsrCalculationMethods = [
     { id: 'S', name: 'Standard' },
     { id: 'H', name: 'Hanafi Late Asr' }
 ];
+
+export const DuhaDefaultOffset = 15;
+export const DuhaendDefaultOffset = -10;

@@ -67,7 +67,7 @@ export default function Menu() {
                     <div className="tab-pane fade show active" id="home">
                         <div className='px-3'>
                             <Settings />
-                            <div className='d-flex flex-row justify-content-between align-items-center mt-4'>
+                            <div className='d-flex flex-row justify-content-between align-items-center mt-3'>
 
                                 {navigator.onLine ? (<div>
                                     <span className='badge p-0'>{FontAwesome.CheckOn} Auto update</span>

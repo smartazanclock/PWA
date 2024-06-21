@@ -12,7 +12,7 @@ import { format12 } from '../scripts/SmartAzanClock';
 
 export default function Settings() {
 
-    const { vakits, calculationSettings, locationSettings, deviceSettings, azanSettings,
+    const { vakits, arcVakits, calculationSettings, locationSettings, deviceSettings, azanSettings,
         offsetSettings, updateOffset, previewAudio, oneThirdTime, twoThirdTime, midnightTime } = useContext(AppContext)
 
     const CalculationMethodValues = [];
@@ -70,21 +70,21 @@ export default function Settings() {
 
             <p></p>
 
-            <span className='badge mb-2 p-0'>Calculation Method</span>
+            <span className='badge mb-1 p-0'>Calculation Method</span>
             <DropDown name="calculationSettings.method" selectedValue={calculationSettings.method} values={CalculationMethodValues} />
 
             <p></p>
 
-            <span className='badge mb-2 p-0'>Asr Calculation Method</span>
+            <span className='badge mb-1 p-0'>Asr Calculation Method</span>
             <Options name="calculationSettings.asrMethod" selectedValue={calculationSettings.asrMethod} values={AsrCalculationMethods} />
             <p></p>
 
-            <span className='badge mb-2 p-0'>Display Mode</span>
+            <span className='badge mb-1 p-0'>Display Mode</span>
             <Options name="deviceSettings.mode" selectedValue={deviceSettings.mode} values={DeviceModes} />
 
             <p></p>
 
-            <span className='badge mb-2 p-0'>Enable Azan Calls & Alarms</span>
+            <span className='badge mb-1 p-0'>Enable Azan Calls & Alarms</span>
             <Options name="deviceSettings.azanCallsEnabled" selectedValue={deviceSettings.azanCallsEnabled} values={AzanCallOptions} />
 
             <p></p>
@@ -93,11 +93,15 @@ export default function Settings() {
 
 
             <div className='d-flex flex-row justify-content-start gap-2 mt-3'>
-                <div className='badge p-0'>1/3 @ {format12(oneThirdTime)}</div>
-                <div className='badge p-0'>Midnight @ {format12(midnightTime)}</div>
-                <div className='badge p-0'>2/3 @ {format12(twoThirdTime)}</div>
+                <div className='badge bg-secondary p-1'>Imsak @ {format12(arcVakits.find(f => f.name == 'Imsak').time)}</div>
+                <div className='badge bg-secondary p-1'>Duha @ {format12(arcVakits.find(f => f.name == 'Duha').time)} - {format12(arcVakits.find(f => f.name == 'Duhaend').time)}</div>
+                <div className='badge bg-secondary p-1'>1/3 @ {format12(oneThirdTime)}</div>
+            </div>
+            <div className='d-flex flex-row justify-content-start gap-2 mt-2'>
+                <div className='badge bg-secondary p-1'>Midnight @ {format12(midnightTime)}</div>
+                <div className='badge bg-secondary p-1'>2/3 @ {format12(twoThirdTime)}</div>
             </div>
 
-        </div>
+        </div >
     )
 }

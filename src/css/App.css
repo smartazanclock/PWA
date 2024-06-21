@@ -110,3 +110,8 @@ body {
   display: inline-block;
   background-color: yellowgreen;
 }
+
+.rtl {
+  direction: rtl;
+  font-size: 14px;
+}

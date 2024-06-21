@@ -39,20 +39,50 @@ export const SmartAzanClock = {
         this.prayerTimes = prayTimes.getTimes(this.currentDateTime, [this.settings.locationSettings.lat, this.settings.locationSettings.lng, 0], getOffsetHoursFromTimeZone(this.settings.locationSettings.timeZoneID), 0, '24h');
 
         let vakits = [];
-        let vakitCounter = 0;
-        vakits.push(new Vakit(vakitCounter, ++vakitCounter, 'Fajr', this.getPrayerTime('fajr'), this.getPrayerTime('sunrise'), this.currentTimeString, 'darkorange'));
-        vakits.push(new Vakit(vakitCounter, ++vakitCounter, 'Sunrise', this.getPrayerTime('sunrise'), this.getPrayerTime('dhuhr'), this.currentTimeString, '#EBDE67'));
-        vakits.push(new Vakit(vakitCounter, ++vakitCounter, 'Dhuhr', this.getPrayerTime('dhuhr'), this.getPrayerTime('asr'), this.currentTimeString, 'seagreen'));
-        vakits.push(new Vakit(vakitCounter, ++vakitCounter, 'Asr', this.getPrayerTime('asr'), this.getPrayerTime('maghrib'), this.currentTimeString, '#0099FF'));
-        vakits.push(new Vakit(vakitCounter, ++vakitCounter, 'Maghrib', this.getPrayerTime('maghrib'), this.getPrayerTime('isha'), this.currentTimeString, 'tomato'));
-        vakits.push(new Vakit(vakitCounter, 0, 'Isha', this.getPrayerTime('isha'), this.getPrayerTime('fajr'), this.currentTimeString, '#334051'));
+        let arcVakits = [];
 
-        this.currentVakit = vakits.filter(a => a.isCurrentVakit())[0];
-        this.nextVakit = vakits.filter(a => a.index === this.currentVakit.nextIndex)[0];
+        let imsakVakit = new Vakit('Imsak', this.getPrayerTime('imsak'), this.getPrayerTime('fajr'), this.currentTimeString, 'orange');
+        let fajrVakit = new Vakit('Fajr', this.getPrayerTime('fajr'), this.getPrayerTime('sunrise'), this.currentTimeString, 'darkorange');
+        let sunriseVakit = new Vakit('Sunrise', this.getPrayerTime('sunrise'), this.getPrayerTime('dhuhr'), this.currentTimeString, '#EBDE67');
+        let sunriseDuhaVakit = new Vakit('Sunrise', this.getPrayerTime('sunrise'), this.getPrayerTime('duha'), this.currentTimeString, 'yellow');
+        let duhaVakit = new Vakit('Duha', this.getPrayerTime('duha'), this.getPrayerTime('duhaend'), this.currentTimeString, '#EBDE67');
+        let duhaendVakit = new Vakit('Duhaend', this.getPrayerTime('duhaend'), this.getPrayerTime('dhuhr'), this.currentTimeString, 'yellow');
+        let dhuhrVakit = new Vakit('Dhuhr', this.getPrayerTime('dhuhr'), this.getPrayerTime('asr'), this.currentTimeString, 'seagreen');
+        let asrVakit = new Vakit('Asr', this.getPrayerTime('asr'), this.getPrayerTime('maghrib'), this.currentTimeString, '#0099FF');
+        let maghribVakit = new Vakit('Maghrib', this.getPrayerTime('maghrib'), this.getPrayerTime('isha'), this.currentTimeString, 'tomato');
+        let ishaImsakVakit = new Vakit('Isha', this.getPrayerTime('isha'), this.getPrayerTime('imsak'), this.currentTimeString, '#334051');
+        let ishaVakit = new Vakit('Isha', this.getPrayerTime('isha'), this.getPrayerTime('fajr'), this.currentTimeString, '#334051');
+
+        arcVakits.push(imsakVakit);
+        arcVakits.push(fajrVakit);
+        arcVakits.push(sunriseDuhaVakit);
+        arcVakits.push(duhaVakit);
+        arcVakits.push(duhaendVakit);
+        arcVakits.push(dhuhrVakit);
+        arcVakits.push(asrVakit);
+        arcVakits.push(maghribVakit);
+        arcVakits.push(ishaImsakVakit);
+
+        vakits.push(fajrVakit);
+        vakits.push(sunriseVakit);
+        vakits.push(dhuhrVakit);
+        vakits.push(asrVakit);
+        vakits.push(maghribVakit);
+        vakits.push(ishaVakit);
+
+        this.cvi = vakits.findIndex(v => v.isCurrentVakit());
+        this.nvi = (this.cvi + 1) % vakits.length;
+        this.currentVakit = vakits[this.cvi];
+        this.nextVakit = vakits[this.nvi];
+
+        this.acvi = arcVakits.findIndex(v => v.isCurrentVakit());
+        this.currentArcVakit = arcVakits[this.acvi];
 
         this.output.vakits = vakits;
+        this.output.arcVakits = arcVakits;
         this.output.currentVakit = this.currentVakit;
         this.output.nextVakit = this.nextVakit;
+        this.output.currentArcVakit = this.currentArcVakit;
         this.output.elapsed = diffBetweenTimes(this.currentVakit.time, this.currentTimeString);
         let nextText = this.currentVakit.nextVakitIn();
 
@@ -105,12 +135,11 @@ export const SmartAzanClock = {
 
         if (this.currentTimeString === this.currentVakit.time && this.settings.deviceSettings.azanCallsEnabled === 'Y') {
             let cvakit = this.currentVakit.name.toLowerCase();
-            if (cvakit !== "sunrise") {
+            if (this.settings.azanSettings[cvakit]) {
                 let aaID = this.settings.azanSettings[cvakit] * 1;
                 setAAA(aaID, this.currentTimeString);
             }
         }
-
 
         this.settings.alarmSettings.map((a) => {
             if (this.currentTimeString === a.time
@@ -161,9 +190,7 @@ const setAAA = (id, time) => {
 }
 
 class Vakit {
-    constructor(index, nextIndex, name, time, nextTime, currentTime, color) {
-        this.index = index;
-        this.nextIndex = nextIndex;
+    constructor(name, time, nextTime, currentTime, color) {
         this.currentTime = currentTime;
         this.name = name;
         this.time = time;
