@@ -67,11 +67,7 @@ export default function Menu() {
                     <div className="tab-pane fade show active" id="home">
                         <div className='px-3'>
                             <Settings />
-                            <div className='d-flex flex-row justify-content-between align-items-center mt-3'>
-
-                                {navigator.onLine ? (<div>
-                                    <span className='badge p-0' title='When there is an update, app will auto-update.'>{FontAwesome.CheckOn} Auto update</span>
-                                </div>) : null}
+                            <div className='d-flex flex-row justify-content-between align-items-center gap-3 mt-3'>
 
                                 {!navigator.onLine ? (<div>
                                     <span title='Looks like you are no longer connected to the Internet. No worries. SmartAzanClock will still work.' className='badge'>
@@ -79,11 +75,11 @@ export default function Menu() {
                                     </span>
                                 </div>) : null}
 
-                                {navigator.onLine ? (<div className='col-4'>
-                                    <a className='btn btn-sm col-12 btn-primary' href="/">{FontAwesome.Reset} Refresh</a>
+                                {navigator.onLine ? (<div className='col-6'>
+                                    <a className='btn btn-sm col-12 btn-primary' href="/">Refresh</a>
                                 </div>) : null}
 
-                                {navigator.onLine ? (<div className='col-4'>
+                                {navigator.onLine ? (<div className='col-6'>
                                     <a className='btn btn-sm col-12 btn-danger' href="/reset/">Reset</a>
                                 </div>) : null}
 
