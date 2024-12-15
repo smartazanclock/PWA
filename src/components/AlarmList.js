@@ -28,7 +28,7 @@ export default function AlarmList() {
                 let audioName = Audios.filter(f => f.id === a.id)[0]?.name
 
                 return (
-                    <div key={'ar' + index} className="card border-1 border-secondary mb-3 bg-dark">
+                    <div key={'ar' + index} className="card border-1 border-secondary mb-3 bg-dark text-light">
                         <div className="card-body">
                             <div className='d-flex flex-row justify-content-between align-items-center'>
                                 <div>
@@ -49,7 +49,7 @@ export default function AlarmList() {
                 let audioName = Audios.filter(f => f.id === a.id)[0]?.name
 
                 return (
-                    <div key={'nar' + index} className="card border-1 border-secondary mb-3 bg-dark">
+                    <div key={'nar' + index} className="card border-1 border-secondary mb-3 bg-dark text-light">
                         <div className="card-body">
                             <div className='d-flex flex-row justify-content-between align-items-center'>
                                 <div>
