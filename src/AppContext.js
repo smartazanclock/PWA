@@ -54,7 +54,7 @@ export default function AppContextProvider() {
     useEffect(() => {
         const userAgent = navigator.userAgent || '';
         if (userAgent.includes('Silk')) {
-            setIsSilkBrowser(true); // Set Silk browser detection flag
+            setIsSilkBrowser(true);
         }
         requestWakeLock();
         document.addEventListener('visibilitychange', function () {
