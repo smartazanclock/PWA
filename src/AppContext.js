@@ -7,6 +7,7 @@ import Menu from './components/Menu';
 import Loading from './components/Loading';
 import Clock from './components/Clock';
 import AudioPlayer from './components/AudioPlayer';
+import SilkSilentAudio from './components/SilkSilentAudio'
 
 export const AppContext = React.createContext();
 
@@ -15,6 +16,7 @@ export default function AppContextProvider() {
     const [showMenu, setShowMenu] = useState(false);
     const [showLoading, setShowLoading] = useState(false);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+    const [isSilkBrowser, setIsSilkBrowser] = useState(false); 
 
     const [output, setOutput] = useState(() => {
 
@@ -34,17 +36,7 @@ export default function AppContextProvider() {
 
         const interval = setInterval(() => {
             let seconds = new Date().getSeconds();
-            let minutes = new Date().getMinutes();
-            let userAgent = navigator.userAgent || '';
-            let isSilk = userAgent.includes('Silk');
             
-            if (!showMenu && !isAudioPlaying && !isSilk && minutes % 3 == 0 && seconds == 0) 
-            {
-                /* refresh silk to prevent amazon echo from reverting to the home screen */
-                dol('silk refresh!');
-                window.location.reload(); 
-            }
-
             let settings = JSON.parse(localStorage.getItem('settings'));
             if (!settings || settings.settingsVersion !== DefaultSettings.settingsVersion) {
                 initUser('initUser: settings removed or upgraded');
@@ -60,6 +52,10 @@ export default function AppContextProvider() {
     })
 
     useEffect(() => {
+        const userAgent = navigator.userAgent || '';
+        if (!userAgent.includes('Silk')) {
+            setIsSilkBrowser(true); // Set Silk browser detection flag
+        }
         requestWakeLock();
         document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible') {
@@ -138,6 +134,7 @@ export default function AppContextProvider() {
             {output ? <Menu /> : null}
             {output ? <AudioPlayer /> : null}
             <ToastContainer autoClose="2000" limit={1} />
+            {isSilkBrowser && <SilkSilentAudio />}
         </AppContext.Provider>
     )
 

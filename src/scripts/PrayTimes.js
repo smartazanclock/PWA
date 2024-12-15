@@ -388,10 +388,7 @@ export default function PrayTimes(method) {
     }
 }
 
-
-
 //---------------------- Degree-Based Math Class -----------------------
-
 
 var DMath = {
 

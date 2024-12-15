@@ -115,3 +115,14 @@ body {
   direction: rtl;
   font-size: 14px;
 }
+
+#silkSettingDiv {
+  position: absolute;
+  bottom:11px;
+  left:11px;
+  background-color: black;
+  padding: 4px 11px;
+  border-radius: 5px;
+  color:whitesmoke;
+  opacity: 0.8;
+}
