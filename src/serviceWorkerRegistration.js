@@ -13,8 +13,7 @@ export function register() {
             if (installingWorker) {
               installingWorker.onstatechange = () => {
                 if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  toast.info('A new version is available! Please refresh the page to update.', { toastId: "PWAVersionUpdate", autoClose: false, closeOnClick: false, draggable: false });
-                  //setTimeout(() => { window.location.reload() }, 3 * 1000);
+                  toast.info(<div><a href="/">A new version is available! Please click here to update.</a></div>, { toastId: "PWAVersionUpdate", autoClose: false, closeOnClick: false, draggable: false });
                 }
               };
             }
