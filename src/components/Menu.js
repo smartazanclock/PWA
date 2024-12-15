@@ -70,12 +70,8 @@ export default function Menu() {
                             <div className='d-flex flex-row justify-content-between align-items-center mt-3'>
 
                                 {navigator.onLine ? (<div>
-                                    <span className='badge p-0'>{FontAwesome.CheckOn} Auto update</span>
+                                    <span className='badge p-0' title='When there is an update, app will auto-update.'>{FontAwesome.CheckOn} Auto update</span>
                                 </div>) : null}
-
-                                <div>
-                                    <span onClick={goRecitations} className="text-light pointer opacity-0">{FontAwesome.Book}</span>
-                                </div>
 
                                 {!navigator.onLine ? (<div>
                                     <span title='Looks like you are no longer connected to the Internet. No worries. SmartAzanClock will still work.' className='badge'>
@@ -83,13 +79,12 @@ export default function Menu() {
                                     </span>
                                 </div>) : null}
 
-
-                                {navigator.onLine ? (<div>
-                                    <a className='btn btn-sm btn-primary' href="/">{FontAwesome.Reset} Refresh App</a>
+                                {navigator.onLine ? (<div className='col-4'>
+                                    <a className='btn btn-sm col-12 btn-primary' href="/">{FontAwesome.Reset} Refresh</a>
                                 </div>) : null}
 
-                                {navigator.onLine ? (<div>
-                                    <a className='btn btn-sm btn-danger' href="/reset/">{FontAwesome.Reset} Reset App</a>
+                                {navigator.onLine ? (<div className='col-4'>
+                                    <a className='btn btn-sm col-12 btn-danger' href="/reset/">Reset</a>
                                 </div>) : null}
 
                             </div>

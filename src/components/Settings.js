@@ -32,14 +32,14 @@ export default function Settings() {
 
         azanSettingsHTML.push(
 
-            <div key={item} className="mt-3">
+            <div key={item} className="mt-2">
 
                 <div className='d-flex flex-row justify-content-between'>
                     <div><span className='badge p-0'>{item} Azan @ {vTime}</span></div>
                     <div className='col-4'><span className='badge'>Minute Offset</span></div>
                 </div>
 
-                <div className='d-flex flex-row gap-1 mt-1'>
+                <div className='d-flex flex-row gap-1'>
 
                     <div className='col-6'>
                         <DropDown name={'azanSettings.' + cVakit} selectedValue={azanValue} values={values} />
@@ -68,29 +68,27 @@ export default function Settings() {
 
             <Address value={locationSettings.address} />
 
-            <p></p>
+            <div className="mt-2">
+                <span className='badge mb-1 p-0'>Calculation Method</span>
+                <DropDown name="calculationSettings.method" selectedValue={calculationSettings.method} values={CalculationMethodValues} />
+            </div>
 
-            <span className='badge mb-1 p-0'>Calculation Method</span>
-            <DropDown name="calculationSettings.method" selectedValue={calculationSettings.method} values={CalculationMethodValues} />
+            <div className="mt-2">
+                <span className='badge mb-1 p-0'>Asr Calculation Method</span>
+                <Options name="calculationSettings.asrMethod" selectedValue={calculationSettings.asrMethod} values={AsrCalculationMethods} />
+            </div>
 
-            <p></p>
+            <div className="mt-2">
+                <span className='badge mb-1 p-0'>Display Mode</span>
+                <Options name="deviceSettings.mode" selectedValue={deviceSettings.mode} values={DeviceModes} />
+            </div>
 
-            <span className='badge mb-1 p-0'>Asr Calculation Method</span>
-            <Options name="calculationSettings.asrMethod" selectedValue={calculationSettings.asrMethod} values={AsrCalculationMethods} />
-            <p></p>
-
-            <span className='badge mb-1 p-0'>Display Mode</span>
-            <Options name="deviceSettings.mode" selectedValue={deviceSettings.mode} values={DeviceModes} />
-
-            <p></p>
-
-            <span className='badge mb-1 p-0'>Enable Azan Calls & Alarms</span>
-            <Options name="deviceSettings.azanCallsEnabled" selectedValue={deviceSettings.azanCallsEnabled} values={AzanCallOptions} />
-
-            <p></p>
-
+            <div className="mt-2">
+                <span className='badge mb-1 p-0'>Enable Azan Calls & Alarms</span>
+                <Options name="deviceSettings.azanCallsEnabled" selectedValue={deviceSettings.azanCallsEnabled} values={AzanCallOptions} />
+            </div>
+            
             {(deviceSettings.azanCallsEnabled === 'Y') && azanSettingsHTML}
-
 
             <div className='d-flex flex-row justify-content-start gap-2 mt-3'>
                 <div className='badge bg-secondary p-1'>Imsak @ {format12(arcVakits.find(f => f.name == 'Imsak').time)}</div>

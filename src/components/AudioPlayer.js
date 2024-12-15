@@ -5,7 +5,7 @@ import { FontAwesome } from '../data/FontAwesome';
 
 export default function AudioPlayer() {
 
-    const { time, locationSettings, dol } = useContext(AppContext)
+    const { time, locationSettings, dol, setIsAudioPlaying } = useContext(AppContext)
     const playerDiv = useRef(null)
     const audioTitle = useRef(null)
     const playButtonDiv = useRef(null)
@@ -14,7 +14,6 @@ export default function AudioPlayer() {
     const endButton = useRef(null)
 
     useEffect(() => {
-
 
         if (!audioPlayer.current.paused) {
             dol('Already playing audio.')
@@ -79,6 +78,7 @@ export default function AudioPlayer() {
     })
 
     const stopAudio = () => {
+        setIsAudioPlaying(false);
         audioPlayer.current.pause();
         audioPlayer.current.currentTime = 0;
         playerDiv.current.style.visibility = 'hidden';
@@ -95,11 +95,13 @@ export default function AudioPlayer() {
     }
 
     const audioPaused = () => {
+        setIsAudioPlaying(false);
         pauseButton.current.innerHTML = 'Continue';
         endButton.current.style.visibility = 'visible';
     }
 
     const audioPlayed = () => {
+        setIsAudioPlaying(true)
         pauseButton.current.innerHTML = 'Pause';
         endButton.current.style.visibility = 'hidden';
     }
@@ -113,8 +115,6 @@ export default function AudioPlayer() {
     return (
         <>
             <div ref={playerDiv} className="audioButtonDiv">
-
-
                 <div className='d-flex flex-row justify-content-start p-3'>
                     <div className='d-flex flex-column align-items-center gap-3'>
                         <div className="text-light text-center" ref={audioTitle}></div>

@@ -12,8 +12,10 @@ export const AppContext = React.createContext();
 
 export default function AppContextProvider() {
 
-    const [showMenu, setShowMenu] = useState(false)
-    const [showLoading, setShowLoading] = useState(false)
+    const [showMenu, setShowMenu] = useState(false);
+    const [showLoading, setShowLoading] = useState(false);
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
     const [output, setOutput] = useState(() => {
 
         let settings = JSON.parse(localStorage.getItem('settings'));
@@ -31,9 +33,19 @@ export default function AppContextProvider() {
     useEffect(() => {
 
         const interval = setInterval(() => {
-            let seconds = new Date().getSeconds()
-            let settings = JSON.parse(localStorage.getItem('settings'));
+            let seconds = new Date().getSeconds();
+            let minutes = new Date().getMinutes();
+            let userAgent = navigator.userAgent || '';
+            let isSilk = userAgent.includes('Silk');
+            
+            if (!showMenu && !isAudioPlaying && !isSilk && minutes % 3 == 0 && seconds == 0) 
+            {
+                /* refresh silk to prevent amazon echo from reverting to the home screen */
+                dol('silk refresh!');
+                window.location.reload(); 
+            }
 
+            let settings = JSON.parse(localStorage.getItem('settings'));
             if (!settings || settings.settingsVersion !== DefaultSettings.settingsVersion) {
                 initUser('initUser: settings removed or upgraded');
             }
@@ -120,7 +132,7 @@ export default function AppContextProvider() {
 
     return (
 
-        <AppContext.Provider value={{ showMenu, setShowMenu, showMsg, ...output, updateSettings, updateOffset, previewAudio, reciteQuranAudio, dol }}>
+        <AppContext.Provider value={{ showMenu, setShowMenu, showMsg, isAudioPlaying, setIsAudioPlaying, ...output, updateSettings, updateOffset, previewAudio, reciteQuranAudio, dol }}>
             {output ? <Clock /> : null}
             {showLoading ? <Loading /> : null}
             {output ? <Menu /> : null}
