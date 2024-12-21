@@ -8,7 +8,7 @@ export default function About() {
     return (
         <div>
 
-            <h5>As Salamu Alaykum</h5>
+            As Salamu Alaykum
             <p></p>
             Use SmartAzanClock.com to turn any Android, Amazon Echo or Raspberry Pi device into an actual adhan clock.
             <p></p>
@@ -33,20 +33,19 @@ export default function About() {
 
             <p></p>
 
-            <div className='badge bg-secondary'>Android or RPi Devices</div>
+            <div className='badge bg-warning text-dark'>Android or RPi Devices</div>
             <div className='ps-1 mt-1'>
             Add smartazanclock.com to your home screen and run it.
             </div>
 
             <p></p>
 
-            <div className='badge bg-secondary'>Amazon Echo Devices</div>
+            <div className='badge bg-warning text-dark'>Amazon Echo Devices</div>
             <div className='ps-1 mt-1'>
                 Say, "Alexa, open Silk browser", navigate to smartazanclock.com and click on the button to keep it always ON.
             </div>
 
-            <p></p>
-            <div className='rtl fs-4'>
+            <div className='rtl fs-4 text-center mt-4'>
                 الحمد لله و الشكر لله
                 <br/>
                 أزكى صلاتي و سلامي على رسول الله
