@@ -10,7 +10,7 @@ export default function About() {
 
             <h5>As Salamu Alaykum</h5>
             <p></p>
-            SmartAzanClock.com is an online adhan clock which can also be used to turn any Android or Raspberry Pi device into an actual adhan clock.
+            Use SmartAzanClock.com to turn any Android, Amazon Echo or Raspberry Pi device into an actual adhan clock.
             <p></p>
 
             <div className='d-flex flex-column gap-2'>
@@ -21,17 +21,7 @@ export default function About() {
 
                 <div className='d-flex flex-row'>
                     <div className='mx-1'>{FontAwesome.Check}</div>
-                    <div>No registration.</div>
-                </div>
-
-                <div className='d-flex flex-row'>
-                    <div className='mx-1'>{FontAwesome.Check}</div>
-                    <div>No subscriptions.</div>
-                </div>
-
-                <div className='d-flex flex-row'>
-                    <div className='mx-1'>{FontAwesome.Check}</div>
-                    <div>No app store downloads.</div>
+                    <div>No registrations or subscriptions.</div>
                 </div>
 
                 <div className='d-flex flex-row'>
@@ -39,42 +29,52 @@ export default function About() {
                     <div>Works even when offline.</div>
                 </div>
 
-                <div className='d-flex flex-row'>
-                    <div className='mx-1'>{FontAwesome.Check}</div>
-                    <div>Doesn't require any specific Android device.</div>
-                </div>
             </div>
 
             <p></p>
 
-
-            Get your own device, add SmartAzanClock to your home screen and run it.
-            That's it!
+            <div className='badge bg-secondary'>Android or RPi Devices</div>
+            <div className='ps-1 mt-1'>
+            Add smartazanclock.com to your home screen and run it.
+            </div>
 
             <p></p>
-            <div className='rtl'>
+
+            <div className='badge bg-secondary'>Amazon Echo Devices</div>
+            <div className='ps-1 mt-1'>
+                Say, "Alexa, open Silk browser", navigate to smartazanclock.com and click on the button to keep it always ON.
+            </div>
+
+            <p></p>
+            <div className='rtl fs-4'>
                 الحمد لله و الشكر لله
+                <br/>
                 أزكى صلاتي و سلامي على رسول الله
             </div>
             <p></p>
-
-
             {
                 navigator.onLine ? (
                     <div className='card p-0'>
-                        <div className='card-body px-2 py-1'>
-                            <div className='badge text-dark'>Device suggestions</div>
-                            <div className='d-flex flex-row align-items-end'>
-                                <div className='text-center flex-grow-1'>
-                                    <a href="https://www.google.com/search?tbm=shop&q=lenovo+m8+smart+tab" target="_blank">
-                                        <img src={lenovoM8Image} className="img-fluid" />
-                                        <div className='badge text-dark'>Lenovo M8</div>
+                        <div className='card-body px-2 ps-2 pb-0'>
+                            
+                            <div className='d-flex flex-row align-items-start'>
+                                
+                                <div className='text-start flex-grow-1'>
+                                    <div className='badge text-dark'>Device suggestions</div>
+                                    
+                                    <a className='badge text-dark' href="https://www.google.com/search?tbm=shop&q=amazon+echo+show" target="_blank">
+                                        Amazon Echo Show
+                                    </a>
+                                    <a className='badge text-dark' href="https://www.google.com/search?tbm=shop&q=lenovo+m8+smart+tab" target="_blank">
+                                        Lenovo M8
+                                    </a>
+                                    <a className='badge text-dark' href="https://www.google.com/search?tbm=shop&q=lenovo+m10+smart+dock" target="_blank">
+                                        Lenovo M10
                                     </a>
                                 </div>
-                                <div className='text-center flex-grow-1'>
-                                    <a href="https://www.google.com/search?tbm=shop&q=lenovo+m10+p10+smart+dock" target="_blank">
-                                        <img src={lenovoM10Image} className="img-fluid" />
-                                        <div className='badge text-dark'>Lenovo M10 or P10</div>
+                                <div className='text-center'>
+                                <a href="https://www.google.com/search?tbm=shop&q=lenovo+m8+smart+tab" target="_blank">
+                                        <img src={lenovoM8Image} className="img-fluid" />
                                     </a>
                                 </div>
                             </div>
