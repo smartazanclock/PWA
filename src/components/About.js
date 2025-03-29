@@ -35,7 +35,7 @@ export default function About() {
 
             <div className='badge bg-warning text-dark'>Android or RPi Devices</div>
             <div className='ps-1 mt-1'>
-            Add smartazanclock.com to your home screen and run it.
+                Add smartazanclock.com to your home screen and run it.
             </div>
 
             <p></p>
@@ -45,22 +45,20 @@ export default function About() {
                 Say, "Alexa, open Silk browser", navigate to smartazanclock.com and click on the button to keep it always ON.
             </div>
 
-            <div className='rtl fs-4 text-center mt-4'>
-                الحمد لله و الشكر لله
-                <br/>
-                أزكى صلاتي و سلامي على رسول الله
+            <div className='rtl fs-5 text-center mt-4 bg-success rounded p-2'>
+                الحمد لله والشكر لله، أزكى صلاتي وسلامي على رسول الله وآله وصحبه أجمعين
             </div>
             <p></p>
             {
                 navigator.onLine ? (
                     <div className='card p-0'>
                         <div className='card-body px-2 ps-2 pb-0'>
-                            
+
                             <div className='d-flex flex-row align-items-start'>
-                                
+
                                 <div className='text-start flex-grow-1'>
                                     <div className='badge text-dark'>Device suggestions</div>
-                                    
+
                                     <a className='badge text-dark' href="https://www.google.com/search?tbm=shop&q=amazon+echo+show" target="_blank">
                                         Amazon Echo Show
                                     </a>
@@ -72,7 +70,7 @@ export default function About() {
                                     </a>
                                 </div>
                                 <div className='text-center'>
-                                <a href="https://www.google.com/search?tbm=shop&q=lenovo+m8+smart+tab" target="_blank">
+                                    <a href="https://www.google.com/search?tbm=shop&q=lenovo+m8+smart+tab" target="_blank">
                                         <img src={lenovoM8Image} className="img-fluid" />
                                     </a>
                                 </div>
